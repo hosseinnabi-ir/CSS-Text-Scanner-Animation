@@ -1,0 +1,59 @@
+body {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #202a33;
+}
+
+.wrapper {
+    position: relative;
+    white-space: nowrap;
+}
+
+.wrapper .blurred-text,
+.wrapper .scanner .scanned-text {
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font: bold 65px Arial;
+}
+
+.wrapper .blurred-text {
+    filter: blur(2px);
+    opacity: .2;
+}
+
+.wrapper .scanner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 120px;
+    clip: rect(0, 120px, 80px, 0);
+    background: linear-gradient(#fff, #fff 0) no-repeat,
+                linear-gradient(to right, #fff, #fff 0) no-repeat,
+                linear-gradient(to right, #fff, #fff 0) bottom left no-repeat,
+                linear-gradient(to right, #fff, #fff 0) bottom left no-repeat,
+                linear-gradient(to right, #fff, #fff 0) bottom right no-repeat,
+                linear-gradient(to right, #fff, #fff 0) bottom right no-repeat,
+                linear-gradient(to right, #fff, #fff 0) top right no-repeat,
+                linear-gradient(to right, #fff, #fff 0) top right no-repeat;
+    background-size: 10px 2px, 2px 10px;
+    animation: scanner 3.5s ease-in-out infinite alternate;
+}
+
+.wrapper .scanner .scanned-text {
+    animation: blurrer 3.5s ease-in-out infinite alternate;
+}
+
+@keyframes scanner {
+    to {
+        transform: translateX(720px);
+    }
+}
+
+@keyframes blurrer {
+    to {
+        transform: translateX(-720px);
+    }
+}
